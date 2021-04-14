@@ -48,16 +48,26 @@ public class DBHelper extends SQLiteAssetHelper {
         List<Question> questions=new ArrayList<>();
         if(cursor.moveToFirst()){
             while (!cursor.isAfterLast()){
-                Question question = new Question(cursor.getInt(cursor.getColumnIndex("ID")),
-                        cursor.getString(cursor.getColumnIndex("QuestionText")),
-                        cursor.getString(cursor.getColumnIndex("QuestionImage")),
-                        cursor.getString(cursor.getColumnIndex("AnswerA")),
-                        cursor.getString(cursor.getColumnIndex("AnswerB")),
-                        cursor.getString(cursor.getColumnIndex("AnswerC")),
-                        cursor.getString(cursor.getColumnIndex("AnswerD")),
-                        cursor.getString(cursor.getColumnIndex("CorrectAnswer")),
-                        cursor.getInt(cursor.getColumnIndex("IsImageQuestion")),
-                        cursor.getInt(cursor.getColumnIndex("CategoryId")));
+                int id = cursor.getInt(cursor.getColumnIndex("ID"));
+                String questionText = cursor.getString(cursor.getColumnIndex("QuestionText"));
+                String questionImage =  cursor.getString(cursor.getColumnIndex("QuestionImage"));
+                String answerA = cursor.getString(cursor.getColumnIndex("AnswerA"));
+                String answerB = cursor.getString(cursor.getColumnIndex("AnswerB"));
+                String answerC = cursor.getString(cursor.getColumnIndex("AnswerC"));
+                String answerD = cursor.getString(cursor.getColumnIndex("AnswerD"));
+                String correctAnswer = cursor.getString(cursor.getColumnIndex("CorrectAnswer"));
+                int isImageQuestion =  cursor.getInt(cursor.getColumnIndex("IsImageQuestion"));
+                int categoryID = cursor.getInt(cursor.getColumnIndex("CategoryID"));
+                Question question = new Question(id,
+                        questionText,
+                        questionImage,
+                        answerA,
+                        answerB,
+                        answerC,
+                        answerD,
+                        correctAnswer,
+                        isImageQuestion,
+                        categoryID);
                 questions.add(question);
                 cursor.moveToNext();
             }

@@ -60,7 +60,8 @@ public class QuestionActivity extends AppCompatActivity implements NavigationVie
         }
     }
     private void takeQuestion(){
-        Common.questionList= DBHelper.getInstance(this).getQuestionByCategory(Common.selectedCategory.getId());
+        int questionID = Common.selectedCategory.getId();
+        Common.questionList= DBHelper.getInstance(this).getQuestionByCategory(questionID);
         if(Common.questionList.size()==0)
         {
             new MaterialAlertDialogBuilder(this)
